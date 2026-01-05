@@ -102,6 +102,15 @@ namespace GameControlMaster
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""7a08c0be-aa34-4b22-bf6c-6d53e21513d2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -214,6 +223,28 @@ namespace GameControlMaster
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8430edda-447c-43a2-a194-18f5fe8e9b7f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""778dd83b-c793-4921-b9f1-d9a54bfc33b7"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -279,6 +310,7 @@ namespace GameControlMaster
             // Gameplay
             m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
             m_Gameplay_Movement = m_Gameplay.FindAction("Movement", throwIfNotFound: true);
+            m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
             // UIControls
             m_UIControls = asset.FindActionMap("UIControls", throwIfNotFound: true);
             m_UIControls_Newaction = m_UIControls.FindAction("New action", throwIfNotFound: true);
@@ -368,6 +400,7 @@ namespace GameControlMaster
         private readonly InputActionMap m_Gameplay;
         private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
         private readonly InputAction m_Gameplay_Movement;
+        private readonly InputAction m_Gameplay_Jump;
         /// <summary>
         /// Provides access to input actions defined in input action map "Gameplay".
         /// </summary>
@@ -383,6 +416,10 @@ namespace GameControlMaster
             /// Provides access to the underlying input action "Gameplay/Movement".
             /// </summary>
             public InputAction @Movement => m_Wrapper.m_Gameplay_Movement;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Jump".
+            /// </summary>
+            public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -412,6 +449,9 @@ namespace GameControlMaster
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
 
             /// <summary>
@@ -426,6 +466,9 @@ namespace GameControlMaster
                 @Movement.started -= instance.OnMovement;
                 @Movement.performed -= instance.OnMovement;
                 @Movement.canceled -= instance.OnMovement;
+                @Jump.started -= instance.OnJump;
+                @Jump.performed -= instance.OnJump;
+                @Jump.canceled -= instance.OnJump;
             }
 
             /// <summary>
@@ -665,6 +708,13 @@ namespace GameControlMaster
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnMovement(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnJump(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UIControls" which allows adding and removing callbacks.

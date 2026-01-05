@@ -359,6 +359,20 @@ MonoBehaviour:
   m_ObsoleteUseShadowQualitySettings: 0
   m_ObsoleteCustomShadowResolution: 512
   m_ObsoleteContactShadows: 0
+--- !u!114 &419366375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Gameplay/Jump
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 93b2cafa5ea50d648b18f4c5cb6f8aab, type: 3}
+  m_ActionId: 7a08c0be-aa34-4b22-bf6c-6d53e21513d2
 --- !u!1 &468354230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,7 +1653,7 @@ Transform:
   m_GameObject: {fileID: 5760113499171988234}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09212284, y: 0.00000011179259, z: 1.589966}
+  m_LocalPosition: {x: 0.09212284, y: 0, z: 1.589966}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1819,6 +1833,7 @@ GameObject:
   - component: {fileID: 4952789817422543280}
   - component: {fileID: 5760113499171988235}
   - component: {fileID: 5760113499171988236}
+  - component: {fileID: 5760113499171988237}
   m_Layer: 0
   m_Name: HumanDummy_F Blue
   m_TagString: Untagged
@@ -1850,7 +1865,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.88, z: 0}
+  m_Center: {x: 0, y: 0.91, z: 0}
 --- !u!114 &5760113499171988236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1865,6 +1880,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BasicCharacterControls
   _stats: {fileID: 11400000, guid: 3f5d4da3dd3c3214aa1786a30a972f2d, type: 2}
   _moveReference: {fileID: 947195273}
+  _jumpButton: {fileID: 419366375}
+  _rotationSpeed: 10
+  _jumpForce: 10
+--- !u!95 &5760113499171988237
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760113499171988234}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: b251f55972d3cd247b4dccc10941838e, type: 3}
+  m_Controller: {fileID: 9100000, guid: 3649766bedd240c4fb4e35b1548edb92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &5785421863029240129
 Transform:
   m_ObjectHideFlags: 0
