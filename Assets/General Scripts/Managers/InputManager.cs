@@ -5,12 +5,12 @@ using Unity.Entities;
 
 public class InputManager : SingletonMaster<InputManager>
 {
-    [SerializeField] CharacterControls _controls;
+    CharacterControls _controls;
 
-    void Awake()
+    public override void Initialize()
     {
         _controls = new CharacterControls();
-        EnableUIControls();
+        //EnableUIControls();
     }
 
     public void CallToEnableAController(int index)
@@ -37,43 +37,66 @@ public class InputManager : SingletonMaster<InputManager>
 
     void EnableGameplayControls()
     {
-        _controls.Gameplay.Enable();
-        Debug.Log("Gameplay controls enabled");
+        if (_controls.Gameplay.enabled == false && _controls != null)
+        {
+            _controls.Gameplay.Enable();
+            Debug.Log("Gameplay controls enabled");
+        }
     }
 
     void DisableGameplayControls()
     {
-        _controls.Gameplay.Disable();
-        Debug.Log("Gameplay controls disabled");
+        if (_controls.Gameplay.enabled == true && _controls != null)
+        {
+            _controls.Gameplay.Disable();
+            Debug.Log("Gameplay controls disabled");
+        }
     }
 
     void EnableUIControls()
     {
-        _controls.UIControls.Enable(); 
-        Debug.Log("UI controls enabled");
+        if (_controls.UIControls.enabled == false && _controls != null)
+        {
+            _controls.UIControls.Enable();
+            Debug.Log("UI controls enabled");
+        }
     }
 
     void DisableUIControls()
     {
-        _controls.UIControls.Disable();
-        Debug.Log("UI controls disabled");
+        if (_controls.UIControls.enabled == true && _controls != null)
+        {
+            _controls.UIControls.Disable();
+            Debug.Log("UI controls disabled");
+        }
     }
 
     void EnableTeamModeControls()
     {
-        _controls.TeamMode.Enable();
-        Debug.Log("Team controls enabled");
+        if (_controls.TeamMode.enabled == false && _controls != null)
+        {
+            _controls.TeamMode.Enable();
+            Debug.Log("Team controls enabled");
+        }
     }
 
     void DisableTeamModeControls()
     {
-        _controls.TeamMode.Disable();
-        Debug.Log("Team controls disabled");
+        if (_controls.TeamMode.enabled == true && _controls != null)
+        {
+            _controls.TeamMode.Disable();
+            Debug.Log("Team controls disabled");
+        }
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        DisableGameplayControls();
-        DisableTeamModeControls();
+        if(_controls != null)
+        {
+            DisableGameplayControls();
+            DisableUIControls();
+            DisableTeamModeControls();
+            _controls.Dispose();
+        }
     }
 }

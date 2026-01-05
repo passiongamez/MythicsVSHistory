@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ff680a3b5ec4049b108398a5026a00, type: 3}
   m_Name: Spartacus
   m_EditorClassIdentifier: Assembly-CSharp::CharacterBaseStats
-  characterName: 
-  health: 0
-  power: 0
-  defense: 0
-  speed: 0
-  level: 0
+  characterName: Spartacus
+  health: 100
+  power: 25
+  defense: 10
+  speed: 4
+  level: 1
   rarity: 0
