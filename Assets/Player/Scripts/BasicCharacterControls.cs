@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -61,6 +62,7 @@ public class BasicCharacterControls : MonoBehaviour
     {
         CheckGrounded();
 
+
         if(_isGrounded && _verticalVelocity < 0f)
         {
             _verticalVelocity = -1f;
@@ -109,8 +111,18 @@ public class BasicCharacterControls : MonoBehaviour
             Debug.Log("jumped");
             _anim.SetTrigger("JUMP");
             _verticalVelocity = _jumpForce;
-            //_characterController.Move(Vector3.up * _jumpForce * Time.deltaTime);
+            StartCoroutine(Landing());
         }
+    }
+
+    IEnumerator Landing()
+    {
+        while (!_isGrounded)
+        {
+            yield return null;
+        }
+        _anim.SetTrigger("ISGROUNDED");
+
     }
 
     void CheckGrounded()
