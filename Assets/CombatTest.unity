@@ -119,6 +119,20 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &376471923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Gameplay/Attack/Fire
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 93b2cafa5ea50d648b18f4c5cb6f8aab, type: 3}
+  m_ActionId: 2521f0c1-3853-4880-b2a6-204823af024e
 --- !u!1 &410330853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,6 +1847,7 @@ GameObject:
   - component: {fileID: 4952789817422543280}
   - component: {fileID: 5760113499171988235}
   - component: {fileID: 5760113499171988236}
+  - component: {fileID: 5760113499171988238}
   - component: {fileID: 5760113499171988237}
   m_Layer: 0
   m_Name: HumanDummy_F Blue
@@ -1905,6 +1920,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5760113499171988238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760113499171988234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd3edd30dcf38e4cb7ac9156277b473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatControls
+  _stats: {fileID: 11400000, guid: 3f5d4da3dd3c3214aa1786a30a972f2d, type: 2}
+  _attackButton: {fileID: 376471923}
 --- !u!4 &5785421863029240129
 Transform:
   m_ObjectHideFlags: 0

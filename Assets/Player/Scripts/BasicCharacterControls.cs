@@ -32,12 +32,17 @@ public class BasicCharacterControls : MonoBehaviour
     [SerializeField] float _jumpForce = 10f;
     Vector3 _jumpHeight;
     float _jumpPos;
-
+    bool _canJump = true;
+    WaitForSeconds _jumpCooldown;
+    float _jumpCooldownTime = 1f;
+    Coroutine _jumpCoroutine;
+    Coroutine _landingCoroutine;
 
     private void Awake()
     {
         _speed = _stats.speed;
         _characterController = GetComponent<CharacterController>();
+        _jumpCooldown = new WaitForSeconds(_jumpCooldownTime);
         _jumpButton.action.started +=  OnJump;
 
         if( _characterController == null)
@@ -106,13 +111,33 @@ public class BasicCharacterControls : MonoBehaviour
 
     void OnJump(InputAction.CallbackContext ctx)
     {
-        if (_isGrounded == true)
+        if (_isGrounded == true && _canJump == true)
         {
             Debug.Log("jumped");
             _anim.SetTrigger("JUMP");
             _verticalVelocity = _jumpForce;
-            StartCoroutine(Landing());
+            _isGrounded = false;
+            _canJump = false;
+
+            if (_jumpCoroutine == null)
+            {
+                _jumpCoroutine = StartCoroutine(JumpCooldown());
+            }
+
+            if(_landingCoroutine == null)
+            {
+                _landingCoroutine = StartCoroutine(Landing());
+            }
+            _anim.ResetTrigger("ISGROUNDED");
         }
+    }
+
+    IEnumerator JumpCooldown()
+    {
+        yield return _jumpCooldown;
+        _canJump = true;
+        _anim.ResetTrigger("JUMP");
+        _jumpCoroutine = null;
     }
 
     IEnumerator Landing()
@@ -122,7 +147,7 @@ public class BasicCharacterControls : MonoBehaviour
             yield return null;
         }
         _anim.SetTrigger("ISGROUNDED");
-
+        _landingCoroutine = null;
     }
 
     void CheckGrounded()
@@ -159,5 +184,25 @@ public class BasicCharacterControls : MonoBehaviour
             Debug.DrawRay(transform.position, Vector3.down * hitDebug.distance, Color.yellow);
         }
 #endif
+    }
+
+    public void StopMovement()
+    {
+        _moveReference.action.Disable();
+    }
+
+    public void ResumeMovement()
+    {
+        _moveReference.action.Enable();
+    }
+
+    public void DeactivateJump()
+    {
+        _jumpButton.action.Disable();
+    }
+
+    public void ActivateJump()
+    {
+        _jumpButton.action.Enable();
     }
 }

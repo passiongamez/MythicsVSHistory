@@ -111,6 +111,15 @@ namespace GameControlMaster
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack/Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""2521f0c1-3853-4880-b2a6-204823af024e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -245,6 +254,28 @@ namespace GameControlMaster
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a25751bc-4988-44e9-9c14-e9daf1646bf2"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack/Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c209fed3-331b-4157-92ed-4bbba45cb6e2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack/Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -311,6 +342,7 @@ namespace GameControlMaster
             m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
             m_Gameplay_Movement = m_Gameplay.FindAction("Movement", throwIfNotFound: true);
             m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
+            m_Gameplay_AttackFire = m_Gameplay.FindAction("Attack/Fire", throwIfNotFound: true);
             // UIControls
             m_UIControls = asset.FindActionMap("UIControls", throwIfNotFound: true);
             m_UIControls_Newaction = m_UIControls.FindAction("New action", throwIfNotFound: true);
@@ -401,6 +433,7 @@ namespace GameControlMaster
         private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
         private readonly InputAction m_Gameplay_Movement;
         private readonly InputAction m_Gameplay_Jump;
+        private readonly InputAction m_Gameplay_AttackFire;
         /// <summary>
         /// Provides access to input actions defined in input action map "Gameplay".
         /// </summary>
@@ -420,6 +453,10 @@ namespace GameControlMaster
             /// Provides access to the underlying input action "Gameplay/Jump".
             /// </summary>
             public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/AttackFire".
+            /// </summary>
+            public InputAction @AttackFire => m_Wrapper.m_Gameplay_AttackFire;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -452,6 +489,9 @@ namespace GameControlMaster
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @AttackFire.started += instance.OnAttackFire;
+                @AttackFire.performed += instance.OnAttackFire;
+                @AttackFire.canceled += instance.OnAttackFire;
             }
 
             /// <summary>
@@ -469,6 +509,9 @@ namespace GameControlMaster
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
+                @AttackFire.started -= instance.OnAttackFire;
+                @AttackFire.performed -= instance.OnAttackFire;
+                @AttackFire.canceled -= instance.OnAttackFire;
             }
 
             /// <summary>
@@ -715,6 +758,13 @@ namespace GameControlMaster
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnJump(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Attack/Fire" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnAttackFire(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UIControls" which allows adding and removing callbacks.
