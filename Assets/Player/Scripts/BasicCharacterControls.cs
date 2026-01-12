@@ -42,6 +42,7 @@ public class BasicCharacterControls : MonoBehaviour
     {
         _speed = _stats.speed;
         _characterController = GetComponent<CharacterController>();
+        _characterController.stepOffset = 0.15f;
         _jumpCooldown = new WaitForSeconds(_jumpCooldownTime);
         _jumpButton.action.started +=  OnJump;
 
@@ -83,6 +84,7 @@ public class BasicCharacterControls : MonoBehaviour
             OnMove();
         }
 
+
         _verticalMovement = Vector3.up * _verticalVelocity;
         _characterController.Move(_verticalMovement * Time.deltaTime);
     }
@@ -102,10 +104,12 @@ public class BasicCharacterControls : MonoBehaviour
          _anim.SetBool("ISRUNNING", true);
          _rotation = Quaternion.LookRotation(_movement, Vector3.up);
          transform.rotation = Quaternion.Slerp(transform.rotation, _rotation, _rotationSpeed * Time.deltaTime);
+            Debug.Log("Set ISRUNNING TRUE");
         }
         else
         {
             _anim.SetBool("ISRUNNING", false);
+            Debug.Log("Set ISRUNNING FALSE");
         }
     }
 
@@ -159,31 +163,36 @@ public class BasicCharacterControls : MonoBehaviour
                                      - _groundCheckDistance;
 
             _isGrounded = hit.distance <= maxAllowedDistance;
-        }
-        else
-        {
-            _isGrounded = false;
-        }
 
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.3f, _groundLayerMask))
-        {
-            // Only accept if almost vertical (helps avoid detecting walls as ground)
-            if (Vector3.Dot(hit.normal, Vector3.up) > 0.7f) // normal is mostly upward
+            if (Vector3.Dot(hit.normal, Vector3.up) < 0.7f)
             {
-                _isGrounded = true;
-                return;
+                _isGrounded = false;
             }
-        }
+            else
+            {
+                _isGrounded = false;
+            }
+
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.3f, _groundLayerMask))
+            {
+                // Only accept if almost vertical (helps avoid detecting walls as ground)
+                if (Vector3.Dot(hit.normal, Vector3.up) > 0.7f) // normal is mostly upward
+                {
+                    _isGrounded = true;
+                    return;
+                }
+            }
 
 #if UNITY_EDITOR
-        Color rayColor = _isGrounded ? Color.green : Color.red;
-        Debug.DrawRay(transform.position, Vector3.down * .1f, rayColor);
+            Color rayColor = _isGrounded ? Color.green : Color.red;
+            Debug.DrawRay(transform.position, Vector3.down * .1f, rayColor);
 
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitDebug, .1f, _groundLayerMask))
-        {
-            Debug.DrawRay(transform.position, Vector3.down * hitDebug.distance, Color.yellow);
-        }
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitDebug, .1f, _groundLayerMask))
+            {
+                Debug.DrawRay(transform.position, Vector3.down * hitDebug.distance, Color.yellow);
+            }
 #endif
+        }
     }
 
     public void StopMovement()
@@ -204,5 +213,10 @@ public class BasicCharacterControls : MonoBehaviour
     public void ActivateJump()
     {
         _jumpButton.action.Enable();
+    }
+
+    private void OnDestroy()
+    {
+        _jumpButton.action.started -= OnJump;
     }
 }
