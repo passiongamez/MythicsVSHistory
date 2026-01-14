@@ -7,6 +7,7 @@ public class CombatControls : MonoBehaviour
 {
     [SerializeField] CharacterBaseStats _stats;
     BasicCharacterControls _basicControls;
+    SpecialAttacks _specialAttacks;
     Animator _anim;
 
     int _power;
@@ -21,6 +22,9 @@ public class CombatControls : MonoBehaviour
     int _maxComboInput = 3;
     int _currentComboInput = 0;
     bool _nextAttackReady = false;
+
+    [SerializeField] InputActionReference _ultimate;
+    [SerializeField] InputActionReference _palleteWheel;
 
     [SerializeField] Image _image;
 
@@ -46,22 +50,35 @@ public class CombatControls : MonoBehaviour
             Debug.Log("BasicCharacterControls is null");
         }
 
+        _specialAttacks = GetComponent<SpecialAttacks>();
+
+        if(_specialAttacks == null)
+        {
+            Debug.Log("Special attacks script is null");
+        }
+
         _power = _stats.power;
 
         _attackWait = new WaitForSeconds(_cooldown);
         _attackButton.action.performed += OnAttack;
+        _ultimate.action.performed += UltimateAttack;
+        _palleteWheel.action.started += OnPaletteOpen;
     }
 
     private void Update()
     {
-        //if(_anim.GetBool("INCOMBO") == true && Time.time < _lastAttackEnd && _anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .5f)
-        //{
-        //    if(_currentComboInput < _maxComboInput)
-        //    _nextAttackReady = true;
-        //}
         if (_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .85f && Time.time > _lastAttackEnd && _anim.GetBool("INCOMBO") == true) 
         {
             ComboEnd();
+        }
+
+        if(_ultimate.action.phase == InputActionPhase.Performed)
+        {
+            TurnOffAttack();
+        }
+        if(_ultimate.action.phase == InputActionPhase.Canceled)
+        {
+            TurnOnAttack();
         }
 
         if(_nextAttackReady == true)
@@ -149,8 +166,21 @@ public class CombatControls : MonoBehaviour
         _attackButton.action.performed += OnAttack;
     }
 
+    void UltimateAttack(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("Ultimate performed");
+    }
+
+    void OnPaletteOpen(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("Palette wheel opened");
+        _specialAttacks.EnablePaletteControls();
+    }
+
     private void OnDestroy()
     {
         _attackButton.action.performed -= OnAttack;
+        _ultimate.action.performed -= UltimateAttack;
+        _palleteWheel.action.started -= OnPaletteOpen;
     }
 }

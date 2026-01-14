@@ -120,6 +120,24 @@ namespace GameControlMaster
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpecialWheel"",
+                    ""type"": ""Button"",
+                    ""id"": ""9d2cbcca-850e-45ea-b131-83d849dba9e5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ultimate"",
+                    ""type"": ""Button"",
+                    ""id"": ""6216588b-d586-468f-84bb-3fdd3c531a99"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -276,6 +294,94 @@ namespace GameControlMaster
                     ""action"": ""Attack/Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15fed053-e1b9-4839-ad21-40fb164748c0"",
+                    ""path"": ""<Mouse>/forwardButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db930025-2dda-4bf3-bd67-54ad059c9dfb"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""PC Controls"",
+                    ""id"": ""312a1390-7798-4a54-ae39-5d82b8ac6f66"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""33be22c5-d044-4130-857d-0cfe7b5d0e86"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""d51d66b0-73b0-4984-a2bc-0929d870011b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""5e3e5ff3-85d0-449d-8cbd-8642ec4b3661"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""84f3b7c0-d642-41e3-805e-6baaf160a82a"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""300964da-36b5-4224-92c9-ca10206790f6"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -334,6 +440,138 @@ namespace GameControlMaster
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""SpecialAttacks"",
+            ""id"": ""449e7178-8a9d-4e83-be38-9abeb7f123ac"",
+            ""actions"": [
+                {
+                    ""name"": ""Special1"",
+                    ""type"": ""Button"",
+                    ""id"": ""263e217b-2c51-4fa1-949e-b0d77fd31498"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Special2"",
+                    ""type"": ""Button"",
+                    ""id"": ""94b90d33-e47e-47e3-aba2-2266a1aa3f68"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Special3"",
+                    ""type"": ""Button"",
+                    ""id"": ""765a9b7b-0785-4b67-acdd-5fe09ecd5a74"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Special4"",
+                    ""type"": ""Button"",
+                    ""id"": ""754818dd-602a-49c1-9e26-c08ab7a069de"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""43b588b0-72a3-4f3c-b992-c94bad89b0a6"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6195f61-1cb8-4774-809f-6e25b91b85b4"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9599087-2326-48d6-8a9e-639b61cd4c40"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef09d8c2-d2ae-41e0-b9a8-f68152aedae6"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""035b3a7c-ffdc-478b-b9db-4ff762482a37"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb8eddcb-71da-4403-ba16-bfc70d092436"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""acbfe873-7af5-4a72-ab44-8dfc6cb7b99e"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e6657f9-18e6-4b74-93fc-8212573be7b2"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -343,12 +581,20 @@ namespace GameControlMaster
             m_Gameplay_Movement = m_Gameplay.FindAction("Movement", throwIfNotFound: true);
             m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
             m_Gameplay_AttackFire = m_Gameplay.FindAction("Attack/Fire", throwIfNotFound: true);
+            m_Gameplay_SpecialWheel = m_Gameplay.FindAction("SpecialWheel", throwIfNotFound: true);
+            m_Gameplay_Ultimate = m_Gameplay.FindAction("Ultimate", throwIfNotFound: true);
             // UIControls
             m_UIControls = asset.FindActionMap("UIControls", throwIfNotFound: true);
             m_UIControls_Newaction = m_UIControls.FindAction("New action", throwIfNotFound: true);
             // TeamMode
             m_TeamMode = asset.FindActionMap("TeamMode", throwIfNotFound: true);
             m_TeamMode_Newaction = m_TeamMode.FindAction("New action", throwIfNotFound: true);
+            // SpecialAttacks
+            m_SpecialAttacks = asset.FindActionMap("SpecialAttacks", throwIfNotFound: true);
+            m_SpecialAttacks_Special1 = m_SpecialAttacks.FindAction("Special1", throwIfNotFound: true);
+            m_SpecialAttacks_Special2 = m_SpecialAttacks.FindAction("Special2", throwIfNotFound: true);
+            m_SpecialAttacks_Special3 = m_SpecialAttacks.FindAction("Special3", throwIfNotFound: true);
+            m_SpecialAttacks_Special4 = m_SpecialAttacks.FindAction("Special4", throwIfNotFound: true);
         }
 
         ~@CharacterControls()
@@ -356,6 +602,7 @@ namespace GameControlMaster
             UnityEngine.Debug.Assert(!m_Gameplay.enabled, "This will cause a leak and performance issues, CharacterControls.Gameplay.Disable() has not been called.");
             UnityEngine.Debug.Assert(!m_UIControls.enabled, "This will cause a leak and performance issues, CharacterControls.UIControls.Disable() has not been called.");
             UnityEngine.Debug.Assert(!m_TeamMode.enabled, "This will cause a leak and performance issues, CharacterControls.TeamMode.Disable() has not been called.");
+            UnityEngine.Debug.Assert(!m_SpecialAttacks.enabled, "This will cause a leak and performance issues, CharacterControls.SpecialAttacks.Disable() has not been called.");
         }
 
         /// <summary>
@@ -434,6 +681,8 @@ namespace GameControlMaster
         private readonly InputAction m_Gameplay_Movement;
         private readonly InputAction m_Gameplay_Jump;
         private readonly InputAction m_Gameplay_AttackFire;
+        private readonly InputAction m_Gameplay_SpecialWheel;
+        private readonly InputAction m_Gameplay_Ultimate;
         /// <summary>
         /// Provides access to input actions defined in input action map "Gameplay".
         /// </summary>
@@ -457,6 +706,14 @@ namespace GameControlMaster
             /// Provides access to the underlying input action "Gameplay/AttackFire".
             /// </summary>
             public InputAction @AttackFire => m_Wrapper.m_Gameplay_AttackFire;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/SpecialWheel".
+            /// </summary>
+            public InputAction @SpecialWheel => m_Wrapper.m_Gameplay_SpecialWheel;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Ultimate".
+            /// </summary>
+            public InputAction @Ultimate => m_Wrapper.m_Gameplay_Ultimate;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -492,6 +749,12 @@ namespace GameControlMaster
                 @AttackFire.started += instance.OnAttackFire;
                 @AttackFire.performed += instance.OnAttackFire;
                 @AttackFire.canceled += instance.OnAttackFire;
+                @SpecialWheel.started += instance.OnSpecialWheel;
+                @SpecialWheel.performed += instance.OnSpecialWheel;
+                @SpecialWheel.canceled += instance.OnSpecialWheel;
+                @Ultimate.started += instance.OnUltimate;
+                @Ultimate.performed += instance.OnUltimate;
+                @Ultimate.canceled += instance.OnUltimate;
             }
 
             /// <summary>
@@ -512,6 +775,12 @@ namespace GameControlMaster
                 @AttackFire.started -= instance.OnAttackFire;
                 @AttackFire.performed -= instance.OnAttackFire;
                 @AttackFire.canceled -= instance.OnAttackFire;
+                @SpecialWheel.started -= instance.OnSpecialWheel;
+                @SpecialWheel.performed -= instance.OnSpecialWheel;
+                @SpecialWheel.canceled -= instance.OnSpecialWheel;
+                @Ultimate.started -= instance.OnUltimate;
+                @Ultimate.performed -= instance.OnUltimate;
+                @Ultimate.canceled -= instance.OnUltimate;
             }
 
             /// <summary>
@@ -737,6 +1006,135 @@ namespace GameControlMaster
         /// Provides a new <see cref="TeamModeActions" /> instance referencing this action map.
         /// </summary>
         public TeamModeActions @TeamMode => new TeamModeActions(this);
+
+        // SpecialAttacks
+        private readonly InputActionMap m_SpecialAttacks;
+        private List<ISpecialAttacksActions> m_SpecialAttacksActionsCallbackInterfaces = new List<ISpecialAttacksActions>();
+        private readonly InputAction m_SpecialAttacks_Special1;
+        private readonly InputAction m_SpecialAttacks_Special2;
+        private readonly InputAction m_SpecialAttacks_Special3;
+        private readonly InputAction m_SpecialAttacks_Special4;
+        /// <summary>
+        /// Provides access to input actions defined in input action map "SpecialAttacks".
+        /// </summary>
+        public struct SpecialAttacksActions
+        {
+            private @CharacterControls m_Wrapper;
+
+            /// <summary>
+            /// Construct a new instance of the input action map wrapper class.
+            /// </summary>
+            public SpecialAttacksActions(@CharacterControls wrapper) { m_Wrapper = wrapper; }
+            /// <summary>
+            /// Provides access to the underlying input action "SpecialAttacks/Special1".
+            /// </summary>
+            public InputAction @Special1 => m_Wrapper.m_SpecialAttacks_Special1;
+            /// <summary>
+            /// Provides access to the underlying input action "SpecialAttacks/Special2".
+            /// </summary>
+            public InputAction @Special2 => m_Wrapper.m_SpecialAttacks_Special2;
+            /// <summary>
+            /// Provides access to the underlying input action "SpecialAttacks/Special3".
+            /// </summary>
+            public InputAction @Special3 => m_Wrapper.m_SpecialAttacks_Special3;
+            /// <summary>
+            /// Provides access to the underlying input action "SpecialAttacks/Special4".
+            /// </summary>
+            public InputAction @Special4 => m_Wrapper.m_SpecialAttacks_Special4;
+            /// <summary>
+            /// Provides access to the underlying input action map instance.
+            /// </summary>
+            public InputActionMap Get() { return m_Wrapper.m_SpecialAttacks; }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+            public void Enable() { Get().Enable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+            public void Disable() { Get().Disable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+            public bool enabled => Get().enabled;
+            /// <summary>
+            /// Implicitly converts an <see ref="SpecialAttacksActions" /> to an <see ref="InputActionMap" /> instance.
+            /// </summary>
+            public static implicit operator InputActionMap(SpecialAttacksActions set) { return set.Get(); }
+            /// <summary>
+            /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <param name="instance">Callback instance.</param>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+            /// </remarks>
+            /// <seealso cref="SpecialAttacksActions" />
+            public void AddCallbacks(ISpecialAttacksActions instance)
+            {
+                if (instance == null || m_Wrapper.m_SpecialAttacksActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_SpecialAttacksActionsCallbackInterfaces.Add(instance);
+                @Special1.started += instance.OnSpecial1;
+                @Special1.performed += instance.OnSpecial1;
+                @Special1.canceled += instance.OnSpecial1;
+                @Special2.started += instance.OnSpecial2;
+                @Special2.performed += instance.OnSpecial2;
+                @Special2.canceled += instance.OnSpecial2;
+                @Special3.started += instance.OnSpecial3;
+                @Special3.performed += instance.OnSpecial3;
+                @Special3.canceled += instance.OnSpecial3;
+                @Special4.started += instance.OnSpecial4;
+                @Special4.performed += instance.OnSpecial4;
+                @Special4.canceled += instance.OnSpecial4;
+            }
+
+            /// <summary>
+            /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <remarks>
+            /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+            /// </remarks>
+            /// <seealso cref="SpecialAttacksActions" />
+            private void UnregisterCallbacks(ISpecialAttacksActions instance)
+            {
+                @Special1.started -= instance.OnSpecial1;
+                @Special1.performed -= instance.OnSpecial1;
+                @Special1.canceled -= instance.OnSpecial1;
+                @Special2.started -= instance.OnSpecial2;
+                @Special2.performed -= instance.OnSpecial2;
+                @Special2.canceled -= instance.OnSpecial2;
+                @Special3.started -= instance.OnSpecial3;
+                @Special3.performed -= instance.OnSpecial3;
+                @Special3.canceled -= instance.OnSpecial3;
+                @Special4.started -= instance.OnSpecial4;
+                @Special4.performed -= instance.OnSpecial4;
+                @Special4.canceled -= instance.OnSpecial4;
+            }
+
+            /// <summary>
+            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="SpecialAttacksActions.UnregisterCallbacks(ISpecialAttacksActions)" />.
+            /// </summary>
+            /// <seealso cref="SpecialAttacksActions.UnregisterCallbacks(ISpecialAttacksActions)" />
+            public void RemoveCallbacks(ISpecialAttacksActions instance)
+            {
+                if (m_Wrapper.m_SpecialAttacksActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            /// <summary>
+            /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+            /// </summary>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+            /// </remarks>
+            /// <seealso cref="SpecialAttacksActions.AddCallbacks(ISpecialAttacksActions)" />
+            /// <seealso cref="SpecialAttacksActions.RemoveCallbacks(ISpecialAttacksActions)" />
+            /// <seealso cref="SpecialAttacksActions.UnregisterCallbacks(ISpecialAttacksActions)" />
+            public void SetCallbacks(ISpecialAttacksActions instance)
+            {
+                foreach (var item in m_Wrapper.m_SpecialAttacksActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_SpecialAttacksActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        /// <summary>
+        /// Provides a new <see cref="SpecialAttacksActions" /> instance referencing this action map.
+        /// </summary>
+        public SpecialAttacksActions @SpecialAttacks => new SpecialAttacksActions(this);
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Gameplay" which allows adding and removing callbacks.
         /// </summary>
@@ -765,6 +1163,20 @@ namespace GameControlMaster
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnAttackFire(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "SpecialWheel" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSpecialWheel(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Ultimate" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnUltimate(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UIControls" which allows adding and removing callbacks.
@@ -795,6 +1207,42 @@ namespace GameControlMaster
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnNewaction(InputAction.CallbackContext context);
+        }
+        /// <summary>
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "SpecialAttacks" which allows adding and removing callbacks.
+        /// </summary>
+        /// <seealso cref="SpecialAttacksActions.AddCallbacks(ISpecialAttacksActions)" />
+        /// <seealso cref="SpecialAttacksActions.RemoveCallbacks(ISpecialAttacksActions)" />
+        public interface ISpecialAttacksActions
+        {
+            /// <summary>
+            /// Method invoked when associated input action "Special1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSpecial1(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Special2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSpecial2(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Special3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSpecial3(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Special4" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSpecial4(InputAction.CallbackContext context);
         }
     }
 }

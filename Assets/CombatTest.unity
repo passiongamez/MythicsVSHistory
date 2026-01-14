@@ -119,6 +119,20 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &37707076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Gameplay/SpecialWheel
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 93b2cafa5ea50d648b18f4c5cb6f8aab, type: 3}
+  m_ActionId: 9d2cbcca-850e-45ea-b131-83d849dba9e5
 --- !u!1 &410330853
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +878,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1859257739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Gameplay/Ultimate
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 93b2cafa5ea50d648b18f4c5cb6f8aab, type: 3}
+  m_ActionId: 6216588b-d586-468f-84bb-3fdd3c531a99
 --- !u!1 &163412231827267191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2062,6 +2090,7 @@ GameObject:
   - component: {fileID: 5760113499171988235}
   - component: {fileID: 5760113499171988236}
   - component: {fileID: 5760113499171988238}
+  - component: {fileID: 5760113499171988239}
   - component: {fileID: 5760113499171988237}
   m_Layer: 0
   m_Name: HumanDummy_F Blue
@@ -2148,7 +2177,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CombatControls
   _stats: {fileID: 11400000, guid: 3f5d4da3dd3c3214aa1786a30a972f2d, type: 2}
   _attackButton: {fileID: 702602209050311113, guid: 93b2cafa5ea50d648b18f4c5cb6f8aab, type: 3}
+  _ultimate: {fileID: 1859257739}
+  _palleteWheel: {fileID: 37707076}
   _image: {fileID: 1357052329}
+--- !u!114 &5760113499171988239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760113499171988234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa5c9a86db56cb44d88c3c03a1a28b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpecialAttacks
 --- !u!4 &5785421863029240129
 Transform:
   m_ObjectHideFlags: 0
