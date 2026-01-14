@@ -17,7 +17,7 @@ public class CombatControls : MonoBehaviour
     [Header("ComboSystem")]
     [SerializeField] InputActionReference _attackButton;
     float _lastAttackEnd;
-    float _comboDelay = 1f;
+    float _comboDelay = .75f;
     int _maxComboInput = 3;
     int _currentComboInput = 0;
     bool _nextAttackReady = false;
@@ -59,7 +59,7 @@ public class CombatControls : MonoBehaviour
         //    if(_currentComboInput < _maxComboInput)
         //    _nextAttackReady = true;
         //}
-        if (_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .9f && Time.time > _lastAttackEnd && _anim.GetBool("INCOMBO") == true) 
+        if (_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .85f && Time.time > _lastAttackEnd && _anim.GetBool("INCOMBO") == true) 
         {
             ComboEnd();
         }
@@ -82,26 +82,26 @@ public class CombatControls : MonoBehaviour
             _basicControls.DeactivateJump();
             _anim.SetTrigger("ATTACK1");
             _anim.SetBool("INCOMBO", true);
-            _currentComboInput++;
             _lastAttackEnd = Time.time + _comboDelay;
             _canStartCombo = false;
+            _currentComboInput++;
         }
-        else if (_nextAttackReady == true)
+        else if (_nextAttackReady == true && _anim.GetBool("INCOMBO") == true)
         {
             if(_currentComboInput == 1) //&& _anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .5f)
             {
+                _nextAttackReady = false;
                 _basicControls.StopMovement();
                 _basicControls.DeactivateJump();
-                _nextAttackReady = false;
                 _anim.SetTrigger("ATTACK2");
-                _currentComboInput++;
                 _lastAttackEnd = Time.time + _comboDelay;
+                _currentComboInput++;
             }
             else if (_currentComboInput == 2) //&& _anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .6f)
             {
+                _nextAttackReady = false;
                 _basicControls.StopMovement();
                 _basicControls.DeactivateJump();
-                _nextAttackReady = false;
                 _anim.SetTrigger("ATTACK3");
                 _currentComboInput++;
             }
