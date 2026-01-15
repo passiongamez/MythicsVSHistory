@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,9 @@ public class CombatControls : MonoBehaviour
     BasicCharacterControls _basicControls;
     SpecialAttacks _specialAttacks;
     Animator _anim;
+
+    public event Action OnPaletteMapEnable;
+    public event Action OnPaletteMapDisable;
 
     int _power;
     float _cooldown = .25f;
@@ -25,8 +29,12 @@ public class CombatControls : MonoBehaviour
 
     [SerializeField] InputActionReference _ultimate;
     [SerializeField] InputActionReference _palleteWheel;
+    bool _attackButtonReady = true;
 
-    [SerializeField] Image _image;
+    bool _usingUltimate = false;
+    bool _canUseUltimate = true;
+
+    [SerializeField] GameObject _image;
 
 
     private void Awake()
@@ -81,46 +89,57 @@ public class CombatControls : MonoBehaviour
             TurnOnAttack();
         }
 
-        if(_nextAttackReady == true)
+        if(_usingUltimate == true)
         {
-            _image.gameObject.SetActive(true);
+            if (_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+            {
+                _usingUltimate = false;
+            }
         }
-        else
-        {
-            _image.gameObject.SetActive(false);
-        }
+
+        //if(_nextAttackReady == true)
+        //{
+        //    _image.gameObject.SetActive(true);
+        //}
+        //else
+        //{
+        //    _image.gameObject.SetActive(false);
+        //}
     }
 
     void OnAttack(InputAction.CallbackContext ctx)
     {
-        if (_anim.GetBool("INCOMBO") == false && _canStartCombo == true)
+        if(_usingUltimate == false)
         {
-            _basicControls.StopMovement();
-            _basicControls.DeactivateJump();
-            _anim.SetTrigger("ATTACK1");
-            _anim.SetBool("INCOMBO", true);
-            _lastAttackEnd = Time.time + _comboDelay;
-            _canStartCombo = false;
-            _currentComboInput++;
-        }
-        else if (_nextAttackReady == true && _anim.GetBool("INCOMBO") == true)
-        {
-            if(_currentComboInput == 1) //&& _anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .5f)
+            if (_anim.GetBool("INCOMBO") == false && _canStartCombo == true)
             {
-                _nextAttackReady = false;
                 _basicControls.StopMovement();
                 _basicControls.DeactivateJump();
-                _anim.SetTrigger("ATTACK2");
+                _anim.SetTrigger("ATTACK1");
+                _anim.SetBool("INCOMBO", true);
                 _lastAttackEnd = Time.time + _comboDelay;
+                _canStartCombo = false;
                 _currentComboInput++;
             }
-            else if (_currentComboInput == 2) //&& _anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .6f)
+            else if (_nextAttackReady == true && _anim.GetBool("INCOMBO") == true)
             {
-                _nextAttackReady = false;
-                _basicControls.StopMovement();
-                _basicControls.DeactivateJump();
-                _anim.SetTrigger("ATTACK3");
-                _currentComboInput++;
+                if (_currentComboInput == 1) //&& _anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .5f)
+                {
+                    _nextAttackReady = false;
+                    _basicControls.StopMovement();
+                    _basicControls.DeactivateJump();
+                    _anim.SetTrigger("ATTACK2");
+                    _lastAttackEnd = Time.time + _comboDelay;
+                    _currentComboInput++;
+                }
+                else if (_currentComboInput == 2) //&& _anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .6f)
+                {
+                    _nextAttackReady = false;
+                    _basicControls.StopMovement();
+                    _basicControls.DeactivateJump();
+                    _anim.SetTrigger("ATTACK3");
+                    _currentComboInput++;
+                }
             }
         }
     }
@@ -161,20 +180,48 @@ public class CombatControls : MonoBehaviour
         _attackButton.action.performed -= OnAttack;
     }
 
-    void TurnOnAttack()
+    public void TurnOnAttack()
     {
         _attackButton.action.performed += OnAttack;
     }
 
     void UltimateAttack(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Ultimate performed");
+        if (_canUseUltimate)
+        {
+            Debug.Log("Ultimate performed");
+            _usingUltimate = true;
+            _canUseUltimate = false;
+            _anim.SetTrigger("ULTIMATE");
+            Invoke("UltimateCD", 10f);
+        }
+    }
+
+    void UltimateCD()
+    {
+        _canUseUltimate = true;
     }
 
     void OnPaletteOpen(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Palette wheel opened");
-        _specialAttacks.EnablePaletteControls();
+        if(_attackButtonReady == true)
+        {
+            Debug.Log("Palette wheel opened");
+            OnPaletteMapEnable?.Invoke();
+            TurnOffAttack();
+            _basicControls.DeactivateJump();
+            _image.gameObject.SetActive(true);
+            _attackButtonReady = false;
+        }
+        else
+        {
+            Debug.Log("Palette wheel closed");
+            OnPaletteMapDisable?.Invoke();
+            TurnOnAttack();
+            _basicControls.ActivateJump();
+            _image.gameObject.SetActive(false);
+            _attackButtonReady = true;
+        }
     }
 
     private void OnDestroy()
