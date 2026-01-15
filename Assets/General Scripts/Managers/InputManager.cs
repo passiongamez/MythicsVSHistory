@@ -7,32 +7,12 @@ using System;
 public class InputManager : SingletonMaster<InputManager>
 {
     CharacterControls _controls;
-    CombatControls _combatControls;
-
-    public event Action<int> OnSpecialPerformed;
 
     public override void Initialize()
     {
-        _combatControls = FindFirstObjectByType<CombatControls>();
-
-        if( _combatControls != null)
-        {
-            _combatControls.OnPaletteMapEnable += EnableAttackPaletteWheel;
-            _combatControls.OnPaletteMapDisable += DisableAttackPaletteWheel;
-        }
-
         _controls = new CharacterControls();
         //EnableUIControls();
     }
-
-    public void ActivateSpecial(int special)
-    {
-        if(_controls.SpecialAttacks.enabled == true)
-        {
-            
-        }
-    }
-
 
     public void CallToEnableAController(int index)
     {
@@ -41,25 +21,17 @@ public class InputManager : SingletonMaster<InputManager>
             case 0:
                 DisableUIControls();
                 DisableTeamModeControls();
-                DisableAttackPaletteWheel();
                 EnableGameplayControls();
                 break;
             case 1:
                 DisableGameplayControls();
                 DisableTeamModeControls();
-                DisableAttackPaletteWheel();
                 EnableUIControls();
                 break;
             case 2:
                 DisableGameplayControls();
                 DisableUIControls();
-                DisableAttackPaletteWheel();
                 EnableTeamModeControls();
-                break;
-            case 3:
-                //DisableTeamModeControls();
-                DisableUIControls();
-                EnableAttackPaletteWheel();
                 break;
         }
     }
@@ -118,18 +90,6 @@ public class InputManager : SingletonMaster<InputManager>
         }
     }
 
-    void EnableAttackPaletteWheel()
-    {
-        _controls.SpecialAttacks.Enable();
-        Debug.Log("Attack palette enabled");
-    }
-
-    void DisableAttackPaletteWheel()
-    {
-        _controls.SpecialAttacks.Disable();
-        Debug.Log("Attack palette wheel disabled");
-    }
-
     private void OnDestroy()
     {
         if(_controls != null)
@@ -139,8 +99,5 @@ public class InputManager : SingletonMaster<InputManager>
             DisableTeamModeControls();
             _controls.Dispose();
         }
-
-        _combatControls.OnPaletteMapEnable -= EnableAttackPaletteWheel;
-        _combatControls.OnPaletteMapDisable -= DisableAttackPaletteWheel;
     }
 }
