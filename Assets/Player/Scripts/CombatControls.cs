@@ -21,7 +21,7 @@ public class CombatControls : MonoBehaviour
     [Header("ComboSystem")]
     [SerializeField] InputActionReference _attackButton;
     float _lastAttackEnd;
-    float _comboDelay = .75f;
+    float _comboDelay = 1f;
     int _maxComboInput = 3;
     int _currentComboInput = 0;
     bool _nextAttackReady = false;
@@ -46,6 +46,9 @@ public class CombatControls : MonoBehaviour
 
     [SerializeField] InputActionReference _sp4Button;
     bool _canDoSP4 = true;
+
+    bool _isAttacking = false;
+    Coroutine _isAttackingChange;
 
     float _sp1CD = 10f, _sp2CD = 20f, _sp3CD = 30f, _sp4CD = 45f, _ultimateCD = 60f;
 
@@ -101,7 +104,7 @@ public class CombatControls : MonoBehaviour
             TurnOnAttack();
         }
 
-        if(_usingUltimate == true)
+        if (_usingUltimate == true)
         {
             if (_anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
             {
@@ -120,6 +123,7 @@ public class CombatControls : MonoBehaviour
                 {
                     _basicControls.StopMovement();
                     _basicControls.DeactivateJump();
+                    _isAttacking = true;
                     _anim.SetTrigger("ATTACK1");
                     _anim.SetBool("INCOMBO", true);
                     _lastAttackEnd = Time.time + _comboDelay;
@@ -128,7 +132,7 @@ public class CombatControls : MonoBehaviour
                 }
                 else if (_nextAttackReady == true && _anim.GetBool("INCOMBO") == true)
                 {
-                    if (_currentComboInput == 1) //&& _anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .5f)
+                    if (_currentComboInput == 1)
                     {
                         _nextAttackReady = false;
                         _basicControls.StopMovement();
@@ -137,7 +141,7 @@ public class CombatControls : MonoBehaviour
                         _lastAttackEnd = Time.time + _comboDelay;
                         _currentComboInput++;
                     }
-                    else if (_currentComboInput == 2) //&& _anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= .6f)
+                    else if (_currentComboInput == 2)
                     {
                         _nextAttackReady = false;
                         _basicControls.StopMovement();
@@ -149,6 +153,7 @@ public class CombatControls : MonoBehaviour
             }
             else
             {
+                _isAttacking = true;
                 _anim.SetTrigger("RUNNINGATTACK");
                 _basicControls.DeactivateJump();
                 Invoke("RunningAttackReset", 1f);
@@ -158,6 +163,7 @@ public class CombatControls : MonoBehaviour
 
     void RunningAttackReset()
     {
+        _isAttacking = false;
         _anim.ResetTrigger("RUNNINGATTACK");
         _basicControls.ActivateJump();
     }
@@ -166,6 +172,7 @@ public class CombatControls : MonoBehaviour
     {
         _canStartCombo = true;
         _nextAttackReady = false;
+        _isAttacking = false;
         _anim.ResetTrigger("ATTACK1");
         _anim.ResetTrigger("ATTACK2");
         _anim.ResetTrigger("ATTACK3");
@@ -205,12 +212,13 @@ public class CombatControls : MonoBehaviour
 
     void UltimateAttack(InputAction.CallbackContext ctx)
     {
-        if (_canUseUltimate)
+        if (_canUseUltimate && _isAttacking == false)
         {
             Debug.Log("Ultimate performed");
             _usingUltimate = true;
             _canUseUltimate = false;
             _anim.SetTrigger("ULTIMATE");
+            _image.gameObject.SetActive(true);
             Invoke("UltimateCD", _ultimateCD);
         }
     }
@@ -220,6 +228,7 @@ public class CombatControls : MonoBehaviour
         _anim.ResetTrigger("ULTIMATE");
         _canUseUltimate = true;
     }
+
 
     void OnPaletteButton(InputAction.CallbackContext ctx)
     {
@@ -247,7 +256,7 @@ public class CombatControls : MonoBehaviour
 
     void SP1(InputAction.CallbackContext ctx)
     {
-        if(_paletteWheelOpen == true && _canDoSP1 == true)
+        if(_paletteWheelOpen == true && _canDoSP1 == true && _isAttacking == false)
         {
             Debug.Log("Special 1 performed");
             _anim.SetTrigger("SP1");
@@ -263,13 +272,14 @@ public class CombatControls : MonoBehaviour
 
     void SP1CD()
     {
+        _isAttacking = false;
         _anim.ResetTrigger("SP1");
         _canDoSP1 = true;
     }
 
     void SP2(InputAction.CallbackContext ctx)
     {
-        if (_paletteWheelOpen == true && _canDoSP2 == true)
+        if (_paletteWheelOpen == true && _canDoSP2 == true && _isAttacking == false)
         {
             Debug.Log("Special 2 performed");
             _anim.SetTrigger("SP2");
@@ -285,13 +295,14 @@ public class CombatControls : MonoBehaviour
 
     void SP2CD()
     {
+        _isAttacking = false;
         _anim.ResetTrigger("SP2");
         _canDoSP2 = true;
     }
 
     void SP3(InputAction.CallbackContext ctx)
     {
-        if (_paletteWheelOpen == true && _canDoSP3 == true)
+        if (_paletteWheelOpen == true && _canDoSP3 == true && _isAttacking == false)
         {
             Debug.Log("Special 3 performed");
             _anim.SetTrigger("SP3");
@@ -307,13 +318,14 @@ public class CombatControls : MonoBehaviour
 
     void SP3CD()
     {
+        _isAttacking = false;
         _anim.ResetTrigger("SP3");
         _canDoSP3 = true;
     }
 
     void SP4(InputAction.CallbackContext ctx)
     {
-        if (_paletteWheelOpen == true && _canDoSP4 == true)
+        if (_paletteWheelOpen == true && _canDoSP4 == true && _isAttacking == false)
         {
             Debug.Log("Special 4 performed");
             _anim.SetTrigger("SP4");
@@ -329,8 +341,14 @@ public class CombatControls : MonoBehaviour
 
     void SP4CD()
     {
+        _isAttacking = false;
         _anim.ResetTrigger("SP4");
         _canDoSP4 = true;
+    }
+
+    public void IsAttackingToggle()
+    {
+        _isAttacking = !_isAttacking;
     }
 
     private void OnDestroy()
