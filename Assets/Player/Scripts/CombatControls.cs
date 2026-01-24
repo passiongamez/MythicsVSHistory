@@ -8,13 +8,26 @@ public class CombatControls : MonoBehaviour
 {
     [SerializeField] CharacterBaseStats _stats;
     BasicCharacterControls _basicControls;
+    DamageDealer _damageDealer;
+
     Animator _anim;
 
     public event Action OnPaletteMapEnable;
     public event Action OnPaletteMapDisable;
 
-    int _power;
+    float _power;
+    float _tempPower;
+    float _multiplier;
     float _cooldown = .25f;
+
+    float _ultimateMultiplier = 5f;
+    float _sp1Multiplier = 1.5f;
+    float _sp2Multiplier = 2f;
+    float _sp3Multiplier = 2.5f;
+    float _sp4Multiplier = 3f;
+    float _comboEnder2Multiplier = .3f;
+    float _comboEnder3Multiplier = .5f;
+
     bool _canStartCombo = true;
     WaitForSeconds _attackWait;
 
@@ -76,6 +89,13 @@ public class CombatControls : MonoBehaviour
             Debug.Log("BasicCharacterControls is null");
         }
 
+        _damageDealer = GetComponentInChildren<DamageDealer>();
+
+        if(_damageDealer == null)
+        {
+            Debug.Log("Damage dealer script is null");
+        }
+
         _power = _stats.power;
 
         _attackWait = new WaitForSeconds(_cooldown);
@@ -115,6 +135,7 @@ public class CombatControls : MonoBehaviour
 
     void OnAttack(InputAction.CallbackContext ctx)
     {
+        _tempPower = 0;
         if(_usingUltimate == false && _paletteWheelOpen == false)
         {
             if(_anim.GetBool("ISRUNNING") == false)
@@ -124,6 +145,7 @@ public class CombatControls : MonoBehaviour
                     _basicControls.StopMovement();
                     _basicControls.DeactivateJump();
                     _isAttacking = true;
+                    _damageDealer.SetPower(_power);
                     _anim.SetTrigger("ATTACK1");
                     _anim.SetBool("INCOMBO", true);
                     _lastAttackEnd = Time.time + _comboDelay;
@@ -137,6 +159,7 @@ public class CombatControls : MonoBehaviour
                         _nextAttackReady = false;
                         _basicControls.StopMovement();
                         _basicControls.DeactivateJump();
+                        _damageDealer.SetPower(_power);
                         _anim.SetTrigger("ATTACK2");
                         _lastAttackEnd = Time.time + _comboDelay;
                         _currentComboInput++;
@@ -146,6 +169,7 @@ public class CombatControls : MonoBehaviour
                         _nextAttackReady = false;
                         _basicControls.StopMovement();
                         _basicControls.DeactivateJump();
+                        _damageDealer.SetPower(_power);
                         _anim.SetTrigger("ATTACK3");
                         _currentComboInput++;
                     }
@@ -154,6 +178,8 @@ public class CombatControls : MonoBehaviour
             else
             {
                 _isAttacking = true;
+                _tempPower = _power + 3f;
+                _damageDealer.SetPower(_tempPower);
                 _anim.SetTrigger("RUNNINGATTACK");
                 _basicControls.DeactivateJump();
                 Invoke("RunningAttackReset", 1f);
@@ -168,7 +194,7 @@ public class CombatControls : MonoBehaviour
         _basicControls.ActivateJump();
     }
 
-        void DeactivateCombo()
+    void DeactivateCombo()
     {
         _canStartCombo = true;
         _nextAttackReady = false;
@@ -212,11 +238,16 @@ public class CombatControls : MonoBehaviour
 
     void UltimateAttack(InputAction.CallbackContext ctx)
     {
+        _tempPower = 0;
+        _multiplier = 0;
         if (_canUseUltimate && _isAttacking == false)
         {
             Debug.Log("Ultimate performed");
             _usingUltimate = true;
             _canUseUltimate = false;
+            _multiplier = _power * _ultimateMultiplier;
+            _tempPower = _power + _multiplier;
+            _damageDealer.SetPower(_tempPower);
             _anim.SetTrigger("ULTIMATE");
             _image.gameObject.SetActive(true);
             Invoke("UltimateCD", _ultimateCD);
@@ -256,9 +287,14 @@ public class CombatControls : MonoBehaviour
 
     void SP1(InputAction.CallbackContext ctx)
     {
-        if(_paletteWheelOpen == true && _canDoSP1 == true && _isAttacking == false)
+        _tempPower = 0;
+        _multiplier = 0;
+        if (_paletteWheelOpen == true && _canDoSP1 == true && _isAttacking == false)
         {
             Debug.Log("Special 1 performed");
+            _multiplier = _power * _sp1Multiplier;
+            _tempPower = _power + _multiplier;
+            _damageDealer.SetPower(_tempPower);
             _anim.SetTrigger("SP1");
             _canDoSP1 = false;
             _paletteWheelOpen = false;
@@ -279,9 +315,14 @@ public class CombatControls : MonoBehaviour
 
     void SP2(InputAction.CallbackContext ctx)
     {
+        _tempPower = 0;
+        _multiplier = 0;
         if (_paletteWheelOpen == true && _canDoSP2 == true && _isAttacking == false)
         {
             Debug.Log("Special 2 performed");
+            _multiplier = _power * _sp2Multiplier;
+            _tempPower = _power + _multiplier;
+            _damageDealer.SetPower(_tempPower);
             _anim.SetTrigger("SP2");
             _canDoSP2 = false;
             _paletteWheelOpen = false;
@@ -302,9 +343,14 @@ public class CombatControls : MonoBehaviour
 
     void SP3(InputAction.CallbackContext ctx)
     {
+        _tempPower = 0;
+        _multiplier = 0;
         if (_paletteWheelOpen == true && _canDoSP3 == true && _isAttacking == false)
         {
             Debug.Log("Special 3 performed");
+            _multiplier = _power * _sp3Multiplier;
+            _tempPower = _power + _multiplier;
+            _damageDealer.SetPower(_tempPower);
             _anim.SetTrigger("SP3");
             _canDoSP3 = false;
             _paletteWheelOpen = false;
@@ -325,9 +371,14 @@ public class CombatControls : MonoBehaviour
 
     void SP4(InputAction.CallbackContext ctx)
     {
+        _tempPower = 0;
+        _multiplier = 0;
         if (_paletteWheelOpen == true && _canDoSP4 == true && _isAttacking == false)
         {
             Debug.Log("Special 4 performed");
+            _multiplier = _power * _sp4Multiplier;
+            _tempPower = _power + _multiplier;
+            _damageDealer.SetPower(_tempPower);
             _anim.SetTrigger("SP4");
             _canDoSP4 = false;
             _paletteWheelOpen = false;
@@ -349,6 +400,24 @@ public class CombatControls : MonoBehaviour
     public void IsAttackingToggle()
     {
         _isAttacking = !_isAttacking;
+    }
+
+    public void SetComboEnder2Power()
+    {
+        _tempPower = 0;
+        _multiplier = 0;
+        _multiplier = _power * _comboEnder2Multiplier;
+        _tempPower = _power + _multiplier;
+        _damageDealer.SetPower(_tempPower);
+    }
+
+    public void SetComboEnder3Power()
+    {
+        _tempPower = 0;
+        _multiplier = 0;
+        _multiplier = _power * _comboEnder3Multiplier;
+        _tempPower = _power + _multiplier;
+        _damageDealer.SetPower(_tempPower);
     }
 
     private void OnDestroy()

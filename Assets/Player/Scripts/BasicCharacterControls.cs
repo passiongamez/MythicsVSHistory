@@ -27,6 +27,10 @@ public class BasicCharacterControls : MonoBehaviour
     float _speed;
     [SerializeField] float _rotationSpeed = 10f;
 
+
+    float _health;
+    float _currentHealth;
+
     [Header("Jump")]
     bool _isGrounded = true;
     [SerializeField] float _jumpForce = 10f;
@@ -41,6 +45,8 @@ public class BasicCharacterControls : MonoBehaviour
     private void Awake()
     {
         _speed = _stats.speed;
+        _health = _stats.health;
+        _currentHealth = _health;
         _characterController = GetComponent<CharacterController>();
         _characterController.stepOffset = 0.15f;
         _jumpCooldown = new WaitForSeconds(_jumpCooldownTime);
@@ -104,12 +110,10 @@ public class BasicCharacterControls : MonoBehaviour
          _anim.SetBool("ISRUNNING", true);
          _rotation = Quaternion.LookRotation(_movement, Vector3.up);
          transform.rotation = Quaternion.Slerp(transform.rotation, _rotation, _rotationSpeed * Time.deltaTime);
-            Debug.Log("Set ISRUNNING TRUE");
         }
         else
         {
             _anim.SetBool("ISRUNNING", false);
-            Debug.Log("Set ISRUNNING FALSE");
         }
     }
 
@@ -117,7 +121,6 @@ public class BasicCharacterControls : MonoBehaviour
     {
         if (_isGrounded == true && _canJump == true)
         {
-            Debug.Log("jumped");
             _anim.SetTrigger("JUMP");
             _verticalVelocity = _jumpForce;
             _isGrounded = false;
@@ -213,6 +216,37 @@ public class BasicCharacterControls : MonoBehaviour
     public void ActivateJump()
     {
         _jumpButton.action.Enable();
+    }
+
+    void OnDeath()
+    {
+        //_anim.SetTrigger("DEATH");
+        Debug.Log("Character is dead");
+    }
+
+    public void CallForDeath()
+    {
+        OnDeath();
+    }
+
+    public void CalculateDamage()
+    {
+
+    }
+
+    public void SendDamage(float damage)
+    {
+        SubtractHealth(damage);
+    }
+
+    void SubtractHealth(float damage)
+    {
+        _currentHealth -= damage;
+
+        if (_currentHealth <= 0)
+        {
+            OnDeath();
+        }
     }
 
     private void OnDestroy()
