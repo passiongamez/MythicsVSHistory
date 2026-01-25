@@ -32,38 +32,40 @@ public class DamageReceiver : MonoBehaviour
 
             if (other.TryGetComponent<DamageDealer>(out DamageDealer damageDealer))
             {
-                _incomingDamage = damageDealer.power;
+            Debug.Log("Found damage dealer");
+            _incomingDamage = damageDealer.power;
                 _incomingDamage -= _defense;
+                Debug.Log("Incoming damage after defense is: " + _incomingDamage);
 
-                if(_incomingDamage <= 0)
+                if (_incomingDamage <= 0)
                 {
                     _incomingDamage = 1;
                 }
 
-                switch (_bodyPartID)
-                {
-                    case 0:
-                        _bodyPartHealth -= _incomingDamage;
-                        Debug.Log(_incomingDamage + " damage done to head");
-                        _characterControls.SendDamage(_incomingDamage);
-                        break;
-                    case 1:
-                        _bodyPartHealth -= _incomingDamage;
-                        Debug.Log(_incomingDamage + " damage done to body");
-                        _characterControls.SendDamage(_incomingDamage);
-                        break;
-                    case 2:
-                        _bodyPartHealth -= _incomingDamage;
-                        Debug.Log(_incomingDamage + " damage done to arms");
-                         _characterControls.SendDamage(_incomingDamage);
-                        break;
-                    case 3:
-                        _bodyPartHealth -= _incomingDamage;
-                        Debug.Log(_incomingDamage + " damage done to legs");
-                        _characterControls.SendDamage(_incomingDamage);
-                        break;
-                }
+            switch (_bodyPartID)
+            {
+                case 0:
+                    _bodyPartHealth -= _incomingDamage;
+                    Debug.Log(_incomingDamage + " damage done to head");
+                    _characterControls.SendDamage(_incomingDamage);
+                    break;
+                case 1:
+                    _bodyPartHealth -= _incomingDamage;
+                    Debug.Log(_incomingDamage + " damage done to body");
+                    _characterControls.SendDamage(_incomingDamage);
+                    break;
+                case 2:
+                    _bodyPartHealth -= _incomingDamage;
+                    Debug.Log(_incomingDamage + " damage done to arms");
+                    _characterControls.SendDamage(_incomingDamage);
+                    break;
+                case 3:
+                    _bodyPartHealth -= _incomingDamage;
+                    Debug.Log(_incomingDamage + " damage done to legs");
+                    _characterControls.SendDamage(_incomingDamage);
+                    break;
             }
+        }
         if (_bodyPartHealth <= 0)
         {
             _characterControls.CallForDeath();

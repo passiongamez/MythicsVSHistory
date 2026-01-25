@@ -14,7 +14,7 @@ float    _bodyPartID;
 
     private void Awake()
     {
-        _incomingDamage = stats.health;
+        _bodyPartHealth = stats.health;
         _defense = stats.defense;
 
         _characterControls = _player.GetComponent<BasicCharacterControls>();
@@ -44,28 +44,29 @@ float    _bodyPartID;
                 case 0:
                     _bodyPartHealth -= _incomingDamage;
                     Debug.Log(_incomingDamage + " damage done to head");
-                    _characterControls.SendDamage(_incomingDamage);
+                    //_characterControls.SendDamage(_incomingDamage);
                     break;
                 case 1:
                     _bodyPartHealth -= _incomingDamage;
                     Debug.Log(_incomingDamage + " damage done to body");
-                    _characterControls.SendDamage(_incomingDamage);
+                    //_characterControls.SendDamage(_incomingDamage);
                     break;
                 case 2:
                     _bodyPartHealth -= _incomingDamage;
                     Debug.Log(_incomingDamage + " damage done to arms");
-                    _characterControls.SendDamage(_incomingDamage);
+                    //_characterControls.SendDamage(_incomingDamage);
                     break;
                 case 3:
                     _bodyPartHealth -= _incomingDamage;
                     Debug.Log(_incomingDamage + " damage done to legs");
-                    _characterControls.SendDamage(_incomingDamage);
+                    //_characterControls.SendDamage(_incomingDamage);
                     break;
             }
         }
         if (_bodyPartHealth <= 0)
         {
-            _characterControls.CallForDeath();
+            //_characterControls.CallForDeath();
+            Debug.Log("Enemy Dead");
         }
     }
 }
