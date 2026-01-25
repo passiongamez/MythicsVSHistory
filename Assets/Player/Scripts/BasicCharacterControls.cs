@@ -42,6 +42,11 @@ public class BasicCharacterControls : MonoBehaviour
     Coroutine _jumpCoroutine;
     Coroutine _landingCoroutine;
 
+    Coroutine _deathRoutine;
+    WaitForSeconds _deathWait;
+    bool _isDead = false;
+
+
     private void Awake()
     {
         _speed = _stats.speed;
@@ -51,6 +56,7 @@ public class BasicCharacterControls : MonoBehaviour
         _characterController.stepOffset = 0.15f;
         _jumpCooldown = new WaitForSeconds(_jumpCooldownTime);
         _jumpButton.action.started +=  OnJump;
+        _deathWait = new WaitForSeconds(2.5f);
 
         if( _characterController == null)
         {
@@ -218,20 +224,26 @@ public class BasicCharacterControls : MonoBehaviour
         _jumpButton.action.Enable();
     }
 
-    void OnDeath()
+    IEnumerator OnDeath()
     {
-        //_anim.SetTrigger("DEATH");
         Debug.Log("Character is dead");
+        StopMovement();
+        DeactivateJump();
+        _anim.SetTrigger("DEATH");
+        _deathRoutine = null;
+        yield return _deathWait;
+        Destroy(this.gameObject);
     }
 
     public void CallForDeath()
     {
-        OnDeath();
-    }
-
-    public void CalculateDamage()
-    {
-
+        if (_deathRoutine == null && _isDead == false)
+        {
+            _isDead = true;
+            _deathRoutine = StartCoroutine(OnDeath());
+        }
+        else
+            return;
     }
 
     public void SendDamage(float damage)
@@ -241,11 +253,20 @@ public class BasicCharacterControls : MonoBehaviour
 
     void SubtractHealth(float damage)
     {
-        _currentHealth -= damage;
+        if(_isDead == true)
+        {
+            return;
+        }
+        else
+            _currentHealth -= damage;
 
         if (_currentHealth <= 0)
         {
-            OnDeath();
+            if(_deathRoutine == null)
+            {
+                _isDead = true;
+                _deathRoutine = StartCoroutine(OnDeath());
+            }
         }
     }
 

@@ -1177,7 +1177,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
   _stats: {fileID: 11400000, guid: 3f5d4da3dd3c3214aa1786a30a972f2d, type: 2}
-  power: 0
 --- !u!65 &782078320
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1231,7 +1230,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
   _stats: {fileID: 11400000, guid: 3f5d4da3dd3c3214aa1786a30a972f2d, type: 2}
-  power: 0
 --- !u!65 &842407071
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1898,6 +1896,7 @@ GameObject:
   - component: {fileID: 660011587124791251}
   - component: {fileID: 6902041161415450025}
   - component: {fileID: 6902041161415450026}
+  - component: {fileID: 6902041161415450028}
   - component: {fileID: 6902041161415450027}
   m_Layer: 6
   m_Name: HumanCharacterDummy_M
@@ -4105,6 +4104,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.68, y: 1.81, z: 0.48}
   m_Center: {x: 0, y: 0.99, z: 0}
+--- !u!114 &6902041161415450028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171987422308425065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cdcfae5199d76848968ae9dde522492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
+  _stats: {fileID: 11400000, guid: d3ecbbaa35e3fed49a8964bf06c91458, type: 2}
 --- !u!4 &7016933451143089254
 Transform:
   m_ObjectHideFlags: 0
