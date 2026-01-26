@@ -46,6 +46,9 @@ public class BasicCharacterControls : MonoBehaviour
     WaitForSeconds _deathWait;
     bool _isDead = false;
 
+    Coroutine _stunRoutine;
+    bool _isStunned = false;
+
 
     private void Awake()
     {
@@ -269,6 +272,32 @@ public class BasicCharacterControls : MonoBehaviour
             }
         }
     }
+
+    public void OnStun(float duration)
+    {
+        if(_isStunned == false)
+        {
+            _isStunned = true;
+
+            if(_stunRoutine == null)
+            {
+                _stunRoutine = StartCoroutine(StunDuration(duration));
+            }
+        }
+    }
+
+    IEnumerator StunDuration(float duration)
+    {
+       StopMovement();
+       DeactivateJump();
+        _anim.SetBool("ISSTUNNED", true);
+        yield return new WaitForSeconds(duration);
+        _isStunned = false;
+        ResumeMovement();
+         ActivateJump();
+        _anim.SetBool("ISSTUNNED", false);
+         _stunRoutine = null;
+    }   
 
     private void OnDestroy()
     {

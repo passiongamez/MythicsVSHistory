@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DamageReceiver : MonoBehaviour
@@ -6,6 +7,7 @@ public class DamageReceiver : MonoBehaviour
     [SerializeField] CharacterBaseStats _stats;
 
     [SerializeField] GameObject _player;
+    [SerializeField] float _maxBodyPartHealth;
     [SerializeField] float _bodyPartHealth;
 
     //for reference head is 0, body 1, arms 2, legs 3
@@ -13,6 +15,13 @@ public class DamageReceiver : MonoBehaviour
 
     float _incomingDamage;
     float _defense;
+
+    WaitForSeconds _stunTimer;
+    float _healthPCT;
+    float _baseStunChance = .1f;
+    float _stunChance;
+    Coroutine _resetHPCoroutine;
+
 
     private void Awake()
     {
@@ -23,7 +32,9 @@ public class DamageReceiver : MonoBehaviour
             Debug.Log("Character Controls is null");
         }
 
+        _bodyPartHealth = _maxBodyPartHealth;
         _defense = _stats.defense;
+        _stunTimer = new WaitForSeconds(3f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,10 +43,8 @@ public class DamageReceiver : MonoBehaviour
 
             if (other.TryGetComponent<DamageDealer>(out DamageDealer damageDealer))
             {
-            Debug.Log("Found damage dealer");
             _incomingDamage = damageDealer.power;
                 _incomingDamage -= _defense;
-                Debug.Log("Incoming damage after defense is: " + _incomingDamage);
 
                 if (_incomingDamage <= 0)
                 {
@@ -46,22 +55,31 @@ public class DamageReceiver : MonoBehaviour
             {
                 case 0:
                     _bodyPartHealth -= _incomingDamage;
-                    Debug.Log(_incomingDamage + " damage done to head");
                     _characterControls.SendDamage(_incomingDamage);
+                    _bodyPartHealth = Mathf.Max(0, _bodyPartHealth - _incomingDamage);
+
+                    CalculateStun();
+
+                    if(Random.value < _stunChance || _bodyPartHealth <= 0)
+                    {
+                        Debug.Log($"Stun rolled! Chance was {_stunChance:P0}");
+                        _characterControls.OnStun(3f);
+                        if(_resetHPCoroutine == null)
+                        {
+                            _resetHPCoroutine = StartCoroutine(ResetHP());
+                        }
+                    }
                     break;
                 case 1:
                     _bodyPartHealth -= _incomingDamage;
-                    Debug.Log(_incomingDamage + " damage done to body");
                     _characterControls.SendDamage(_incomingDamage);
                     break;
                 case 2:
                     _bodyPartHealth -= _incomingDamage;
-                    Debug.Log(_incomingDamage + " damage done to arms");
                     _characterControls.SendDamage(_incomingDamage);
                     break;
                 case 3:
                     _bodyPartHealth -= _incomingDamage;
-                    Debug.Log(_incomingDamage + " damage done to legs");
                     _characterControls.SendDamage(_incomingDamage);
                     break;
             }
@@ -70,6 +88,20 @@ public class DamageReceiver : MonoBehaviour
         {
             _characterControls.CallForDeath();
         }
+    }
+
+    void CalculateStun()
+    {
+        _healthPCT = _bodyPartHealth / _maxBodyPartHealth;
+        _baseStunChance = .1f;
+        _stunChance = _baseStunChance + (1 - _healthPCT) * .09f;
+    }
+
+    IEnumerator ResetHP()
+    {
+        yield return _stunTimer;
+        _bodyPartHealth = _maxBodyPartHealth;
+        _resetHPCoroutine = null;
     }
 }
 
