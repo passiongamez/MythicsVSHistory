@@ -10,11 +10,13 @@ public class DummyPlayerControllerScript : MonoBehaviour
     void Start()
     {
         agent=GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+       
         if(Mouse.current.leftButton.wasPressedThisFrame)
         {
             Ray ray= Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());

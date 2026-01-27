@@ -1,29 +1,23 @@
 using UnityEngine;
 
-public class IdleState : StateMachineBehaviour
+public class AttackState : StateMachineBehaviour
 {
-    private float timer;
-    Transform player;
-    private float chaseRange=8;
-    //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+     Transform player;
+     private float stopAttackRange=3.5f;
+   // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       timer=0;
-       player= GameObject.FindGameObjectWithTag("Player").transform;
+        player= GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       timer+=Time.deltaTime;
-       if(timer>5)
+        animator.transform.LookAt(player);
+          float distance=Vector3.Distance(player.position,animator.transform.position);
+         if(distance > stopAttackRange)
         {
-            animator.SetBool("isPatrolling",true);
-        }
-         float distance=Vector3.Distance(player.position,animator.transform.position);
-         if(distance<chaseRange)
-        {
-            animator.SetBool("isChasing",true);
+            animator.SetBool("isAttacking",false);
         }
     }
 
@@ -34,10 +28,10 @@ public class IdleState : StateMachineBehaviour
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
+    // override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    // {
     //    // Implement code that processes and affects root motion
-    //}
+    // }
 
     // OnStateIK is called right after Animator.OnAnimatorIK()
     //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
