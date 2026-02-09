@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/OutdoorsScene.unity
-    guid: 8124e5870f4fd4c779e7a5f994e84ad1
+    path: Assets/Scenes/00-MainMenu.unity
+    guid: 385f858727949b54eb5bb2fc6148d801
+  - enabled: 1
+    path: Assets/Scenes/01-FreeMode.unity
+    guid: c97d5e252c2610842b7f096567dc4bbc
+  - enabled: 1
+    path: Assets/Scenes/02-TowerMode.unity
+    guid: 095d63264b89d0643988fd0787de8f5a
+  - enabled: 1
+    path: Assets/Scenes/03-WaveMode.unity
+    guid: b2c7ee4dfd34f3949a896066e3b25488
+  - enabled: 1
+    path: Assets/Scenes/04-DOP.unity
+    guid: 4f83c7b9c0040784ba626633dca6e2e8
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 93b2cafa5ea50d648b18f4c5cb6f8aab, type: 3}

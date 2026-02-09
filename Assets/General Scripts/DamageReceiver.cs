@@ -56,7 +56,7 @@ public class DamageReceiver : MonoBehaviour
                 case 0:
                     _bodyPartHealth -= _incomingDamage;
                     _characterControls.SendDamage(_incomingDamage);
-                    _bodyPartHealth = Mathf.Max(0, _bodyPartHealth - _incomingDamage);
+                    //_bodyPartHealth = Mathf.Max(0, _bodyPartHealth - _incomingDamage);
 
                     CalculateStun();
 
@@ -84,14 +84,11 @@ public class DamageReceiver : MonoBehaviour
                     break;
             }
         }
-        if (_bodyPartHealth <= 0)
-        {
-            _characterControls.CallForDeath();
-        }
     }
 
     void CalculateStun()
     {
+        Debug.Log("Calculating stun chance");
         _healthPCT = _bodyPartHealth / _maxBodyPartHealth;
         _baseStunChance = .1f;
         _stunChance = _baseStunChance + (1 - _healthPCT) * .09f;

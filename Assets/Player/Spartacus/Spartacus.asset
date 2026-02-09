@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Spartacus
   m_EditorClassIdentifier: Assembly-CSharp::CharacterBaseStats
   characterName: Spartacus
-  health: 100
-  power: 25
-  defense: 10
+  health: 250
+  power: 10
+  defense: 5
   speed: 4
   level: 1
   rarity: 0
