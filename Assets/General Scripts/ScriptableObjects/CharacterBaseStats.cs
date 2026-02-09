@@ -4,9 +4,9 @@ using UnityEngine;
 public class CharacterBaseStats : ScriptableObject
 {
     public string characterName;
-    public int health;
-    public int power;
-    public int defense;
+    public float health;
+    public float power;
+    public float defense;
     public float speed;
     public int level;
     public int rarity;

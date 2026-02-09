@@ -102,6 +102,78 @@ namespace GameControlMaster
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""7a08c0be-aa34-4b22-bf6c-6d53e21513d2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack/Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""2521f0c1-3853-4880-b2a6-204823af024e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpecialWheel"",
+                    ""type"": ""Button"",
+                    ""id"": ""9d2cbcca-850e-45ea-b131-83d849dba9e5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ultimate"",
+                    ""type"": ""Button"",
+                    ""id"": ""6216588b-d586-468f-84bb-3fdd3c531a99"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SP1"",
+                    ""type"": ""Button"",
+                    ""id"": ""b8aa30a8-e12f-48ab-9404-03dfb17ac4bb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SP2"",
+                    ""type"": ""Button"",
+                    ""id"": ""778edd04-f74a-4ea5-b06e-e4c3bafce6e4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SP3"",
+                    ""type"": ""Button"",
+                    ""id"": ""2105d9d5-ded4-473d-b363-9afe44ba9ece"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SP4"",
+                    ""type"": ""Button"",
+                    ""id"": ""b0b93139-f61e-4ce7-afa8-0a516e89272d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -214,6 +286,226 @@ namespace GameControlMaster
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8430edda-447c-43a2-a194-18f5fe8e9b7f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""778dd83b-c793-4921-b9f1-d9a54bfc33b7"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a25751bc-4988-44e9-9c14-e9daf1646bf2"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack/Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c209fed3-331b-4157-92ed-4bbba45cb6e2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack/Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15fed053-e1b9-4839-ad21-40fb164748c0"",
+                    ""path"": ""<Mouse>/forwardButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db930025-2dda-4bf3-bd67-54ad059c9dfb"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""PC Controls"",
+                    ""id"": ""312a1390-7798-4a54-ae39-5d82b8ac6f66"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""33be22c5-d044-4130-857d-0cfe7b5d0e86"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""d51d66b0-73b0-4984-a2bc-0929d870011b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""5e3e5ff3-85d0-449d-8cbd-8642ec4b3661"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""84f3b7c0-d642-41e3-805e-6baaf160a82a"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""300964da-36b5-4224-92c9-ca10206790f6"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5ca7415-5b38-4f6f-8539-556b3cc23fea"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SP1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""88e4ba55-3588-4e7f-8164-d3ee198de405"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SP1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7452deb-8ab1-4c0f-85b8-9cb287e73d0f"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SP2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08f2aedc-e525-4c61-a659-348b482a6fa0"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SP2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7feb8c94-c428-4bd3-88ef-1bb039233cbb"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SP3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a1fc1e97-993e-412c-8946-5bde4d2c512d"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SP3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""06c7900c-075c-4d01-86e0-d21585d23e0c"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SP4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0771a83f-3a31-4528-9625-6110cca7e15d"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SP4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -279,6 +571,14 @@ namespace GameControlMaster
             // Gameplay
             m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
             m_Gameplay_Movement = m_Gameplay.FindAction("Movement", throwIfNotFound: true);
+            m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
+            m_Gameplay_AttackFire = m_Gameplay.FindAction("Attack/Fire", throwIfNotFound: true);
+            m_Gameplay_SpecialWheel = m_Gameplay.FindAction("SpecialWheel", throwIfNotFound: true);
+            m_Gameplay_Ultimate = m_Gameplay.FindAction("Ultimate", throwIfNotFound: true);
+            m_Gameplay_SP1 = m_Gameplay.FindAction("SP1", throwIfNotFound: true);
+            m_Gameplay_SP2 = m_Gameplay.FindAction("SP2", throwIfNotFound: true);
+            m_Gameplay_SP3 = m_Gameplay.FindAction("SP3", throwIfNotFound: true);
+            m_Gameplay_SP4 = m_Gameplay.FindAction("SP4", throwIfNotFound: true);
             // UIControls
             m_UIControls = asset.FindActionMap("UIControls", throwIfNotFound: true);
             m_UIControls_Newaction = m_UIControls.FindAction("New action", throwIfNotFound: true);
@@ -368,6 +668,14 @@ namespace GameControlMaster
         private readonly InputActionMap m_Gameplay;
         private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
         private readonly InputAction m_Gameplay_Movement;
+        private readonly InputAction m_Gameplay_Jump;
+        private readonly InputAction m_Gameplay_AttackFire;
+        private readonly InputAction m_Gameplay_SpecialWheel;
+        private readonly InputAction m_Gameplay_Ultimate;
+        private readonly InputAction m_Gameplay_SP1;
+        private readonly InputAction m_Gameplay_SP2;
+        private readonly InputAction m_Gameplay_SP3;
+        private readonly InputAction m_Gameplay_SP4;
         /// <summary>
         /// Provides access to input actions defined in input action map "Gameplay".
         /// </summary>
@@ -383,6 +691,38 @@ namespace GameControlMaster
             /// Provides access to the underlying input action "Gameplay/Movement".
             /// </summary>
             public InputAction @Movement => m_Wrapper.m_Gameplay_Movement;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Jump".
+            /// </summary>
+            public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/AttackFire".
+            /// </summary>
+            public InputAction @AttackFire => m_Wrapper.m_Gameplay_AttackFire;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/SpecialWheel".
+            /// </summary>
+            public InputAction @SpecialWheel => m_Wrapper.m_Gameplay_SpecialWheel;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Ultimate".
+            /// </summary>
+            public InputAction @Ultimate => m_Wrapper.m_Gameplay_Ultimate;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/SP1".
+            /// </summary>
+            public InputAction @SP1 => m_Wrapper.m_Gameplay_SP1;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/SP2".
+            /// </summary>
+            public InputAction @SP2 => m_Wrapper.m_Gameplay_SP2;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/SP3".
+            /// </summary>
+            public InputAction @SP3 => m_Wrapper.m_Gameplay_SP3;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/SP4".
+            /// </summary>
+            public InputAction @SP4 => m_Wrapper.m_Gameplay_SP4;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -412,6 +752,30 @@ namespace GameControlMaster
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+                @AttackFire.started += instance.OnAttackFire;
+                @AttackFire.performed += instance.OnAttackFire;
+                @AttackFire.canceled += instance.OnAttackFire;
+                @SpecialWheel.started += instance.OnSpecialWheel;
+                @SpecialWheel.performed += instance.OnSpecialWheel;
+                @SpecialWheel.canceled += instance.OnSpecialWheel;
+                @Ultimate.started += instance.OnUltimate;
+                @Ultimate.performed += instance.OnUltimate;
+                @Ultimate.canceled += instance.OnUltimate;
+                @SP1.started += instance.OnSP1;
+                @SP1.performed += instance.OnSP1;
+                @SP1.canceled += instance.OnSP1;
+                @SP2.started += instance.OnSP2;
+                @SP2.performed += instance.OnSP2;
+                @SP2.canceled += instance.OnSP2;
+                @SP3.started += instance.OnSP3;
+                @SP3.performed += instance.OnSP3;
+                @SP3.canceled += instance.OnSP3;
+                @SP4.started += instance.OnSP4;
+                @SP4.performed += instance.OnSP4;
+                @SP4.canceled += instance.OnSP4;
             }
 
             /// <summary>
@@ -426,6 +790,30 @@ namespace GameControlMaster
                 @Movement.started -= instance.OnMovement;
                 @Movement.performed -= instance.OnMovement;
                 @Movement.canceled -= instance.OnMovement;
+                @Jump.started -= instance.OnJump;
+                @Jump.performed -= instance.OnJump;
+                @Jump.canceled -= instance.OnJump;
+                @AttackFire.started -= instance.OnAttackFire;
+                @AttackFire.performed -= instance.OnAttackFire;
+                @AttackFire.canceled -= instance.OnAttackFire;
+                @SpecialWheel.started -= instance.OnSpecialWheel;
+                @SpecialWheel.performed -= instance.OnSpecialWheel;
+                @SpecialWheel.canceled -= instance.OnSpecialWheel;
+                @Ultimate.started -= instance.OnUltimate;
+                @Ultimate.performed -= instance.OnUltimate;
+                @Ultimate.canceled -= instance.OnUltimate;
+                @SP1.started -= instance.OnSP1;
+                @SP1.performed -= instance.OnSP1;
+                @SP1.canceled -= instance.OnSP1;
+                @SP2.started -= instance.OnSP2;
+                @SP2.performed -= instance.OnSP2;
+                @SP2.canceled -= instance.OnSP2;
+                @SP3.started -= instance.OnSP3;
+                @SP3.performed -= instance.OnSP3;
+                @SP3.canceled -= instance.OnSP3;
+                @SP4.started -= instance.OnSP4;
+                @SP4.performed -= instance.OnSP4;
+                @SP4.canceled -= instance.OnSP4;
             }
 
             /// <summary>
@@ -665,6 +1053,62 @@ namespace GameControlMaster
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnMovement(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnJump(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Attack/Fire" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnAttackFire(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "SpecialWheel" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSpecialWheel(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Ultimate" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnUltimate(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "SP1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSP1(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "SP2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSP2(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "SP3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSP3(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "SP4" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSP4(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UIControls" which allows adding and removing callbacks.

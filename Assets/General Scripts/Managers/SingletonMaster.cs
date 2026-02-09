@@ -1,3 +1,4 @@
+using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,5 +21,9 @@ public class SingletonMaster<T> : MonoBehaviour where T: SingletonMaster<T>
     private void Awake()
     {
         _instance = (T)this;
+
+        Initialize();
     }
+
+    public virtual void Initialize() { }
 }
