@@ -84,10 +84,6 @@ public class DamageReceiver : MonoBehaviour
                     break;
             }
         }
-        if (_bodyPartHealth <= 0)
-        {
-            _characterControls.CallForDeath();
-        }
     }
 
     void CalculateStun()
