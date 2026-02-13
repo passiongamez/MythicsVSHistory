@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : AIBase
 {
-    [SerializeField] CharacterBaseStats _stats;
     public enum EnemyState
     {
         Idle,
