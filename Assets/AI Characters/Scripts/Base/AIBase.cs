@@ -44,6 +44,24 @@ public class AIBase : MonoBehaviour
 
     protected EnemyState _personality;
 
+    [Header("Sight Settings")]
+    protected float _coneAngle = 90f;
+    protected float _sightRange = 15f;
+    protected LayerMask _playerLayer;
+    protected string _playerTag = "Player";
+    protected float[] _rayHeights;
+    protected float _updateInterval = 0.2f;
+    protected float _updateTimer;
+
+    protected Transform _transfrom;
+
+    public GameObject _detectedTarget { get; protected set; }
+    public bool _canSeeTarget { get; protected set; }
+
+    protected Vector3 _rayOrigin;
+    protected Vector3 _rayDirection;
+    protected float _angleOffset;
+
     protected virtual void Awake()
     {
 
