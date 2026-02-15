@@ -9,16 +9,27 @@ public class AIBase : MonoBehaviour
 
     [Header("Stats")]
     protected float _maxHP;
-    protected float _power;
-    protected float _defense;
-    protected float _speed;
     protected float _currentHP;
-    protected int _level;
-    protected float _attackMultiplier;
+    protected float _tempHP;
+
+    protected float _power;
+    protected float _currentPower;
     protected float _tempPower;
-    protected float _defenseMultiplier;
+
+    protected float _defense;
+    protected float _currentDefense;
     protected float _tempDefense;
+
+    protected float _speed;
+    protected float _currentSpeed;
     protected float _tempSpeed;
+
+    protected int _level;
+
+    protected float _attackMultiplier;
+    protected float _defenseMultiplier;
+    protected float _speedMultiplier;
+    protected float _healthMultiplier;
 
     protected CapsuleCollider _collider;
     protected float _height;
@@ -43,7 +54,7 @@ public class AIBase : MonoBehaviour
         Defensive
     }
 
-    protected EnemyState _personality;
+    protected PersonalityType _personality;
 
     [Header("Sight Settings")]
     protected float _coneAngle = 90f;
@@ -66,10 +77,25 @@ public class AIBase : MonoBehaviour
 
     protected virtual void Awake()
     {
+       //TeamManager.Instance.AssignTeam(gameObject, );
+        _agent = GetComponent<NavMeshAgent>();
+        _animator = GetComponentInChildren<Animator>();
         _transfrom = transform;
+
+        _level = _stats.level;
+        _maxHP = _stats.health;
+        _currentHP = _maxHP;
+        _power = _stats.power;
+        _currentPower = _power;
+        _speed = _stats.speed;
+        _currentSpeed = _speed;
+        _defense = _stats.defense;
+        _currentDefense = _defense;
 
         _collider = GetComponent<CapsuleCollider>();
         _height = _collider.height;
+
+        _personality = PersonalityType.Aggressive;
 
         _rayHeights = new float[3];
         _rayHeights[0] = _height - _height;
@@ -79,20 +105,32 @@ public class AIBase : MonoBehaviour
 
     protected virtual void Start()
     {
-
+        _currentState = EnemyState.Idle;
     }
 
     protected virtual void Update()
     {
+        switch (_currentState)
+        {
+            case EnemyState.Idle:
+                IdleState();
+                break;
+            case EnemyState.Search:
+                SearchState();
+                break;
+            case EnemyState.Chase:
+                ChaseState();
+                break;
+            case EnemyState.Attack:
+                AttackState();
+                break;
+            case EnemyState.Death:
+                DeathState();
+                break;
+        }
+
+
         _updateTimer += Time.deltaTime;
-
-
-
-
-
-
-
-
 
         if (_updateTimer < _updateInterval) return;
         _updateTimer = 0;
@@ -117,7 +155,7 @@ public class AIBase : MonoBehaviour
 
                 if(Physics.Raycast(_rayOrigin, _rayDirection, out RaycastHit hit, _sightRange, _playerLayer))
                 {
-                    if (hit.collider.CompareTag(_playerTag))
+                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Characters") && TeamManager.Instance.IsEnemy(gameObject, hit.collider.gameObject))
                     {
                         _detectedTarget = hit.collider.gameObject;
                         _canSeeTarget = true;
@@ -143,6 +181,31 @@ public class AIBase : MonoBehaviour
             Gizmos.DrawRay(origin, right);
             Gizmos.DrawRay(origin, _transfrom.forward * _sightRange);
         }
+    }
+
+    protected virtual void IdleState()
+    {
+        Debug.Log("In idle state");
+    }
+
+    protected virtual void SearchState()
+    {
+        Debug.Log("In search state");
+    }
+
+    protected virtual void ChaseState()
+    {
+        Debug.Log("In chase state");
+    }
+
+    protected virtual void AttackState()
+    {
+        Debug.Log("In attack state");
+    }
+
+    protected virtual void DeathState()
+    {
+        Debug.Log("In death state");
     }
 
     protected virtual void PassiveAbility()

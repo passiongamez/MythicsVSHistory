@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9ff680a3b5ec4049b108398a5026a00, type: 3}
-  m_Name: EnemyPrototype
+  m_Name: Prototype Agressive Enemy
   m_EditorClassIdentifier: Assembly-CSharp::CharacterBaseStats
   characterName: 
-  health: 100
-  power: 15
+  health: 20
+  power: 5
   defense: 3
-  speed: 2
+  speed: 3
   level: 1
   rarity: 0
