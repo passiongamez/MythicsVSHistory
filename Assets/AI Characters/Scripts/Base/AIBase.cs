@@ -77,7 +77,6 @@ public class AIBase : MonoBehaviour
 
     protected virtual void Awake()
     {
-       //TeamManager.Instance.AssignTeam(gameObject, );
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponentInChildren<Animator>();
         _transfrom = transform;
@@ -243,7 +242,17 @@ public class AIBase : MonoBehaviour
 
     }
 
+    protected virtual void SP1Cooldown()
+    {
+
+    }
+
     protected virtual void SP2()
+    {
+
+    }
+
+    protected virtual void SP2Cooldown()
     {
 
     }
@@ -252,12 +261,28 @@ public class AIBase : MonoBehaviour
     {
 
     }
-     protected virtual void SP4()
+
+    protected virtual void SP3Cooldown()
+    {
+
+    }
+
+    protected virtual void SP4()
+    {
+
+    }
+
+    protected virtual void SP4Cooldown()
     {
 
     }
 
     protected virtual void UltimateAbility()
+    {
+
+    }
+
+    protected virtual void UltimateCooldown()
     {
 
     }

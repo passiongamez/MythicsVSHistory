@@ -17,11 +17,12 @@ public class TeamManager : SingletonMaster<TeamManager>
         }
     }
 
-    public string AssignTeam(GameObject character, int teamId)
+    public string AssignTeam(GameObject character)
     {
-        if(teamId == -1) teamId = _nextTeamId++;
+        //if(teamId == -1) teamId = _nextTeamId++;
         
-        _teamTag = "Team" + teamId;
+        _teamTag = "Team" + _nextTeamId.ToString();
+
         character.tag = _teamTag;
 
         Debug.Log(character.name + " is assignted to " + _teamTag);

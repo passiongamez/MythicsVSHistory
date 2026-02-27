@@ -5,18 +5,18 @@ using UnityEngine.SceneManagement;
 public class GameModeManager : SingletonMaster<GameModeManager>
 {
     [SerializeField] ModeConfig[] _allGameModes;
-    ModeConfig _gameMode;
+    public ModeConfig gameMode;
 
     public void LoadGame(GameModeType selectedMode)
     {
-        _gameMode = _allGameModes.FirstOrDefault(g => g.gameMode == selectedMode);
+        gameMode = _allGameModes.FirstOrDefault(g => g.gameMode == selectedMode);
 
-        if(_gameMode == null)
+        if(gameMode == null)
         {
             Debug.LogError($"No config found for mode {selectedMode}");
             return;
         }
 
-        SceneManager.LoadSceneAsync(_gameMode.sceneName);
+        SceneManager.LoadSceneAsync(gameMode.sceneName);
     }
 }
