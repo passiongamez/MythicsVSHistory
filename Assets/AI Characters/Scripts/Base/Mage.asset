@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20f9f064f2f3ebe41b65461305b38ceb, type: 3}
-  m_Name: Healer
-  m_EditorClassIdentifier: Assembly-CSharp::AllyHeroData
-  HeroName: Healer
-  MaxHP: 100
+  m_Script: {fileID: 11500000, guid: f9ff680a3b5ec4049b108398a5026a00, type: 3}
+  m_Name: Mage
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterBaseStats
+  characterName: Mage
+  health: 100
+  power: 70
+  defense: 20
+  speed: 40
+  level: 1
+  rarity: 0
